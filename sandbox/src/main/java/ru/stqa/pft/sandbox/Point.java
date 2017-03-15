@@ -9,8 +9,8 @@ public class Point {
     this.x = x;
     this.y = y;
   }
-  public double distance(Point p1, Point p2) {
+  public double distance(Point p1) {
 
-    return Math.sqrt((p2.y-p1.y)*(p2.y-p1.y)+(p2.x-p1.x)*(p2.x-p1.x));
+    return Math.sqrt((this.y-p1.y)*(this.y-p1.y)+(this.x-p1.x)*(this.x-p1.x));
   }
 }
