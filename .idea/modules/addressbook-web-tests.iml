@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="addressbook-web-tests" external.linked.project.path="$MODULE_DIR$/../../addressbook-web-tests" external.root.project.path="$MODULE_DIR$/../../addressbook-web-tests" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../addressbook-web-tests/build/classes/main" />
+    <output-test url="file://$MODULE_DIR$/../../addressbook-web-tests/build/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../addressbook-web-tests">
+      <sourceFolder url="file://$MODULE_DIR$/../../addressbook-web-tests/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../addressbook-web-tests/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../addressbook-web-tests/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../addressbook-web-tests/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../addressbook-web-tests/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../addressbook-web-tests/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.testng:testng:6.11" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.beust:jcommander:1.64" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.testng:testng:6.11" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.beust:jcommander:1.64" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.testng:testng:6.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.beust:jcommander:1.64" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
+  </component>
+</module>
