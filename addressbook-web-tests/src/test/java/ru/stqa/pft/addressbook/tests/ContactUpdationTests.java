@@ -6,10 +6,10 @@ public class ContactUpdationTests extends TestBase{
 
   @Test
   public void testContactUpdation() {
-    app.gotoHomePage();
-    app.selectContact();
-    app.intiEditContact();
-    app.updateContact();
+    app.getNavigationHelper().gotoHomePage();
+    app.getContactHelper().selectContact();
+    app.getContactHelper().intiEditContact();
+    app.getContactHelper().updateContact();
     app.returnToHomePage();
   }
 
