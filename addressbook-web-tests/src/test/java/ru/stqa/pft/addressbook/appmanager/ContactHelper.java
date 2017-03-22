@@ -49,31 +49,7 @@ public class ContactHelper {
     wd.findElement(By.linkText("add new")).click();
   }
 
-  public void updateContact() {
-    wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("firstNameUpdated");
-    wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("firstNameUpdated");
-    wd.findElement(By.name("middlename")).click();
-    wd.findElement(By.name("middlename")).clear();
-    wd.findElement(By.name("middlename")).sendKeys("MiddleNameUpdated");
-    wd.findElement(By.name("lastname")).click();
-    wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("LastNameUpdated");
-    wd.findElement(By.name("nickname")).click();
-    wd.findElement(By.name("nickname")).clear();
-    wd.findElement(By.name("nickname")).sendKeys("NickNameUpdtaed");
-    wd.findElement(By.name("company")).click();
-    wd.findElement(By.name("company")).clear();
-    wd.findElement(By.name("company")).sendKeys("CompanyUpdated");
-    wd.findElement(By.name("home")).click();
-    wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys("TelephoneUpdated");
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("emailUpdated");
+  public void submitUpdateContact() {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
 
