@@ -10,7 +10,7 @@ public class ContactUpdationTests extends TestBase{
     app.getNavigationHelper().gotoHomePage();
     app.getContactHelper().selectContact();
     app.getContactHelper().intiEditContact();
-    app.getContactHelper().fillContactForm(new ContactData("firstNameUPDATED", "middleNameUPDATED", "lastNameUPDATED", "NickNameUPDATED", "CompanyUPDATED", "AddressUPDATED", "TelephoneUPDATED", "emailUPDATED"));
+    app.getContactHelper().fillContactForm(new ContactData("firstNameUPDATED", "middleNameUPDATED", "lastNameUPDATED", "NickNameUPDATED", "CompanyUPDATED", "AddressUPDATED", "TelephoneUPDATED", "emailUPDATED", "uuu"), false);
     app.getContactHelper().submitUpdateContact();
     app.returnToHomePage();
   }
