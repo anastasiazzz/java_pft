@@ -12,6 +12,9 @@ public class GroupUpdationTests extends TestBase{
 
   public void testGroupUpdation() {
     app.getNavigationHelper().gotoGroupPage();
+    if (! app.getGroupHelper().isThereAGroup()) {
+      app.getGroupHelper().createGroup(new GroupData("test", "Header", "Footer"));
+    }
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupUpdation();
     app.getGroupHelper().fillGroupForm(new GroupData("testUPDATED", "HeaderUPDATED", "FooterUPDATED"));
