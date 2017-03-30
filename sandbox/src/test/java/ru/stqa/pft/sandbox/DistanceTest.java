@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created by anastasia.papko on 17.03.2017.
+ * Created by anastasia.papko on 17.03.2017..
  */
 public class DistanceTest {
 
