@@ -75,17 +75,30 @@ public class ContactHelper extends BaseHelper {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(ContactData contactData, boolean creation) {
+  public void create(ContactData contactData, boolean creation) {
     initContactCreation();
     fillContactForm(contactData, creation);
     submitContactCreation();
+  }
+
+  public void modify(int index, ContactData contact) {
+    selectContact(index);
+    intiEditContact();
+    fillContactForm(contact, false);
+    submitUpdateContact();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    initContactDeletion();
+    acceptContactDeletion();
   }
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -93,8 +106,7 @@ public class ContactHelper extends BaseHelper {
       String lastName = element.findElements(By.tagName("td")).get(1).getText();
       String firstName = element.findElements(By.tagName("td")).get(2).getText();
       System.out.println(id+" "+lastName+" "+firstName);
-      ContactData contact = new ContactData(firstName, null, lastName, null, null, null, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
     }
 
     return contacts;
