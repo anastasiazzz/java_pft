@@ -65,6 +65,7 @@ public class ContactHelper extends BaseHelper {
     String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
     String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
@@ -72,7 +73,7 @@ public class ContactHelper extends BaseHelper {
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstName(firstName).withMiddleName(middleName).withLastName(lastName)
+    return new ContactData().withId(contact.getId()).withFirstName(firstName).withMiddleName(middleName).withLastName(lastName).withAddress(address)
             .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone).withEmail1(email1).withEmail2(email2).withEmail3(email3);
   }
 
@@ -141,9 +142,10 @@ public class ContactHelper extends BaseHelper {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       String lastName = element.findElements(By.tagName("td")).get(1).getText();
       String firstName = element.findElements(By.tagName("td")).get(2).getText();
-      String allPhones = element.findElements(By.tagName("td")).get(5).getText();
+      String address = element.findElements(By.tagName("td")).get(3).getText();
       String allEmails = element.findElements(By.tagName("td")).get(4).getText();
-      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAllPhones(allPhones).withAllEmails(allEmails));
+      String allPhones = element.findElements(By.tagName("td")).get(5).getText();
+      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAddress(address).withAllPhones(allPhones).withAllEmails(allEmails));
     }
     return contactCache;
   }
