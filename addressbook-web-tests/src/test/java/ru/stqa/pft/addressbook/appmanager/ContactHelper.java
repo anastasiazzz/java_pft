@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -36,7 +35,9 @@ public class ContactHelper extends BaseHelper {
     fillField(By.name("home"), contactData.getHomePhone());
     fillField(By.name("mobile"), contactData.getMobilePhone());
     fillField(By.name("work"), contactData.getWorkPhone());
-    fillField(By.name("email"), contactData.getEmail());
+    fillField(By.name("email"), contactData.getEmail1());
+    fillField(By.name("email"), contactData.getEmail2());
+    fillField(By.name("email"), contactData.getEmail3());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -67,9 +68,12 @@ public class ContactHelper extends BaseHelper {
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+    String email1 = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstName(firstName).withMiddleName(middleName).withLastName(lastName)
-            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
+            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone).withEmail1(email1).withEmail2(email2).withEmail3(email3);
   }
 
   public void initEditContactById(int id) {
@@ -137,9 +141,9 @@ public class ContactHelper extends BaseHelper {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       String lastName = element.findElements(By.tagName("td")).get(1).getText();
       String firstName = element.findElements(By.tagName("td")).get(2).getText();
-      String[] phones = element.findElements(By.tagName("td")).get(5).getText().split("\n");
-      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
-                .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+      String allPhones = element.findElements(By.tagName("td")).get(5).getText();
+      String allEmails = element.findElements(By.tagName("td")).get(4).getText();
+      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAllPhones(allPhones).withAllEmails(allEmails));
     }
     return contactCache;
   }
