@@ -13,7 +13,8 @@ import static org.hamcrest.Matchers.equalTo;
 /**
  * Created by anastasia.papko on 20.04.2017.
  */
-public class ContactEmailTests extends TestBase {
+public class ContactInfoTests extends TestBase{
+
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().homePage();
@@ -24,24 +25,31 @@ public class ContactEmailTests extends TestBase {
   }
 
   @Test
-  public void testContactEmail() {
+  public void testContactInfo() {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
+    ContactData contactDetails = app.contact().infoFromDetailsForm(contact);
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    assertThat(mergeDetails2(contactDetails), equalTo(mergeDetails(contactInfoFromEditForm)));
   }
 
-  private String mergeEmails(ContactData contact) {
-    return Arrays.asList(contact.getEmail1(),contact.getEmail2(),contact.getEmail3())
+  private String mergeDetails(ContactData contact) {
+    return Arrays.asList(contact.getFirstName(), contact.getLastName(), contact.getAddress(), contact.getEmail1(), contact.getEmail2(),contact.getEmail3(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
             .stream().filter(s -> !(s==null || s.equals("")))
-           .map(ContactEmailTests::cleaned)
-            .collect(Collectors.joining("\n"));
+          //  .map(ContactInfoTests::cleaned)
+           .collect(Collectors.joining("\n"));
+  }
+
+  private String mergeDetails2(ContactData contact) {
+    return Arrays.asList(contact.getName(), contact.getAddress(), contact.getEmail1(), contact.getEmail2(),contact.getEmail3(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+            .stream().filter(s -> !(s==null || s.equals("")))
+        //    .map(ContactInfoTests::cleaned)
+           .collect(Collectors.joining("\n"));
   }
 
   public static String cleaned(String phone){
     return phone.replaceAll("\\s","");
   }
-
- }
+}
 

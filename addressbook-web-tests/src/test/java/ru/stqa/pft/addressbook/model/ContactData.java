@@ -17,7 +17,14 @@ public class ContactData {
   private String email3;
   private String allEmails;
   private String group;
+  private String name;
 
+
+
+  public ContactData withName(String name) {
+    this.name = name;
+    return this;
+  }
 
 
   public ContactData withId(int id) {
@@ -183,5 +190,6 @@ public class ContactData {
     return allPhones;
   }
 
+  public String getName() { return name;  }
 
 }
