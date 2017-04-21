@@ -83,17 +83,17 @@ public class ContactHelper extends BaseHelper {
   public ContactData infoFromDetailsForm(ContactData contact) {
     openContactDetailsById(contact.getId());
 
-    String[] name = wd.findElement(By.cssSelector("div[id='content']")).getText().split("\n");
-    String address = wd.findElements(By.cssSelector("div[id='content']")).get(0).findElements(By.tagName("br")).get(0).getText();
-    String homePhone = wd.findElements(By.tagName("br")).get(2).getText();
-    String mobilePhone = wd.findElements(By.tagName("br")).get(3).getText();
-    String workPhone = wd.findElements(By.tagName("br")).get(4).getText();
-    String email1 = wd.findElements(By.tagName("a")).get(1).getText();
-    String email2 = wd.findElements(By.tagName("a")).get(2).getText();
-    String email3 = wd.findElements(By.tagName("a")).get(3).getText();
+    String[] details = wd.findElement(By.cssSelector("div[id='content']")).getText().split("\n");
+    //String address = wd.findElements(By.cssSelector("div[id='content']")).get(0).findElements(By.tagName("br")).get(0).getText();
+   // String homePhone = wd.findElements(By.tagName("br")).get(2).getText();
+    //String mobilePhone = wd.findElements(By.tagName("br")).get(3).getText();
+    //String workPhone = wd.findElements(By.tagName("br")).get(4).getText();
+   // String email1 = wd.findElements(By.tagName("a")).get(1).getText();
+    //String email2 = wd.findElements(By.tagName("a")).get(2).getText();
+    //String email3 = wd.findElements(By.tagName("a")).get(3).getText();
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstName(name[0]).withLastName(name[1]).withAddress(address)
-            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone).withEmail1(email1).withEmail2(email2).withEmail3(email3);
+    return new ContactData().withId(contact.getId()).withFirstName(details[0]).withLastName(details[1]).withAddress(details[2])
+            .withHomePhone(details[3]).withMobilePhone(details[4]).withWorkPhone(details[5]).withEmail1(details[6]).withEmail2(details[7]).withEmail3(details[8]);
   }
 
 

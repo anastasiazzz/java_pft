@@ -31,25 +31,19 @@ public class ContactInfoTests extends TestBase{
     ContactData contactDetails = app.contact().infoFromDetailsForm(contact);
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(mergeDetails2(contactDetails), equalTo(mergeDetails(contactInfoFromEditForm)));
+    assertThat(mergeDetails(contactDetails), equalTo(mergeDetails(contactInfoFromEditForm)));
   }
 
   private String mergeDetails(ContactData contact) {
     return Arrays.asList(contact.getFirstName(), contact.getLastName(), contact.getAddress(), contact.getEmail1(), contact.getEmail2(),contact.getEmail3(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter(s -> !(s==null || s.equals("")))
-          //  .map(ContactInfoTests::cleaned)
+           .stream().filter(s -> !(s==null || s.equals("")))
+           .map(ContactInfoTests::cleaned)
            .collect(Collectors.joining("\n"));
   }
 
-  private String mergeDetails2(ContactData contact) {
-    return Arrays.asList(contact.getName(), contact.getAddress(), contact.getEmail1(), contact.getEmail2(),contact.getEmail3(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter(s -> !(s==null || s.equals("")))
-        //    .map(ContactInfoTests::cleaned)
-           .collect(Collectors.joining("\n"));
-  }
 
   public static String cleaned(String phone){
-    return phone.replaceAll("\\s","");
+    return phone.replaceAll("\\s","").replaceAll("H:","").replaceAll("M:","").replaceAll("W:","");
   }
 }
 
