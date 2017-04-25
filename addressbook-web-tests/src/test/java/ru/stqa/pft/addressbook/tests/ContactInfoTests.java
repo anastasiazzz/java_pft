@@ -28,10 +28,10 @@ public class ContactInfoTests extends TestBase{
   public void testContactInfo() {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
-    ContactData contactDetails = app.contact().infoFromDetailsForm(contact);
+    String contactDetails = app.contact().infoFromDetailsForm(contact);
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(mergeDetails(contactDetails), equalTo(mergeDetails(contactInfoFromEditForm)));
+    assertThat(contactDetails, equalTo(mergeDetails(contactInfoFromEditForm)));
   }
 
   private String mergeDetails(ContactData contact) {

@@ -39,6 +39,8 @@ public class ContactHelper extends BaseHelper {
     fillField(By.name("email"), contactData.getEmail1());
     fillField(By.name("email"), contactData.getEmail2());
     fillField(By.name("email"), contactData.getEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
+
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -80,10 +82,10 @@ public class ContactHelper extends BaseHelper {
 
 
 
-  public ContactData infoFromDetailsForm(ContactData contact) {
+  public String infoFromDetailsForm(ContactData contact) {
     openContactDetailsById(contact.getId());
 
-    String[] details = wd.findElement(By.cssSelector("div[id='content']")).getText().split("\n");
+    String details = wd.findElement(By.cssSelector("div[id='content']")).getText();
     //String address = wd.findElements(By.cssSelector("div[id='content']")).get(0).findElements(By.tagName("br")).get(0).getText();
    // String homePhone = wd.findElements(By.tagName("br")).get(2).getText();
     //String mobilePhone = wd.findElements(By.tagName("br")).get(3).getText();
@@ -92,8 +94,9 @@ public class ContactHelper extends BaseHelper {
     //String email2 = wd.findElements(By.tagName("a")).get(2).getText();
     //String email3 = wd.findElements(By.tagName("a")).get(3).getText();
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstName(details[0]).withLastName(details[1]).withAddress(details[2])
-            .withHomePhone(details[3]).withMobilePhone(details[4]).withWorkPhone(details[5]).withEmail1(details[6]).withEmail2(details[7]).withEmail3(details[8]);
+    return details;
+            //new ContactData().withId(contact.getId()).withFirstName(details[0]).withLastName(details[1]).withAddress(details[2])
+           // .withHomePhone(details[3]).withMobilePhone(details[4]).withWorkPhone(details[5]).withEmail1(details[6]).withEmail2(details[7]).withEmail3(details[8]);
   }
 
 
