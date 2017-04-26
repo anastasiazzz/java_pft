@@ -15,6 +15,10 @@ import static org.hamcrest.Matchers.equalTo;
  */
 public class ContactInfoTests extends TestBase{
 
+  public static String cleaned(String phone){
+    return phone.replaceAll("\\s","");
+  }
+
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().homePage();
@@ -35,15 +39,10 @@ public class ContactInfoTests extends TestBase{
   }
 
   private String mergeDetails(ContactData contact) {
-    return Arrays.asList(contact.getFirstName(), contact.getLastName(), contact.getAddress(), contact.getEmail1(), contact.getEmail2(),contact.getEmail3(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+    return Arrays.asList(contact.getFirstName(), contact.getLastName(), contact.getAddress(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(), contact.getEmail1(), contact.getEmail2(),contact.getEmail3())
            .stream().filter(s -> !(s==null || s.equals("")))
            .map(ContactInfoTests::cleaned)
-           .collect(Collectors.joining("\n"));
-  }
-
-
-  public static String cleaned(String phone){
-    return phone.replaceAll("\\s","").replaceAll("H:","").replaceAll("M:","").replaceAll("W:","");
+           .collect(Collectors.joining(""));
   }
 }
 

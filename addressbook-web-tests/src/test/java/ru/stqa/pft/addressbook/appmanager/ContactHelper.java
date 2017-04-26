@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import com.sun.javafx.binding.StringFormatter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +14,8 @@ import java.util.List;
  * Created by anastasia.papko on 22.03.2017.
  */
 public class ContactHelper extends BaseHelper {
+
+  public Contacts contactCache = null;
 
   public ContactHelper(WebDriver wd) {
 
@@ -80,25 +81,14 @@ public class ContactHelper extends BaseHelper {
             .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone).withEmail1(email1).withEmail2(email2).withEmail3(email3);
   }
 
-
-
   public String infoFromDetailsForm(ContactData contact) {
     openContactDetailsById(contact.getId());
 
-    String details = wd.findElement(By.cssSelector("div[id='content']")).getText();
-    //String address = wd.findElements(By.cssSelector("div[id='content']")).get(0).findElements(By.tagName("br")).get(0).getText();
-   // String homePhone = wd.findElements(By.tagName("br")).get(2).getText();
-    //String mobilePhone = wd.findElements(By.tagName("br")).get(3).getText();
-    //String workPhone = wd.findElements(By.tagName("br")).get(4).getText();
-   // String email1 = wd.findElements(By.tagName("a")).get(1).getText();
-    //String email2 = wd.findElements(By.tagName("a")).get(2).getText();
-    //String email3 = wd.findElements(By.tagName("a")).get(3).getText();
+    String details = wd.findElement(By.cssSelector("div[id='content']")).getText().replaceAll("\\s","").replaceAll("H:","").replaceAll("M:","").replaceAll("W:","");
     wd.navigate().back();
     return details;
-            //new ContactData().withId(contact.getId()).withFirstName(details[0]).withLastName(details[1]).withAddress(details[2])
-           // .withHomePhone(details[3]).withMobilePhone(details[4]).withWorkPhone(details[5]).withEmail1(details[6]).withEmail2(details[7]).withEmail3(details[8]);
-  }
 
+  }
 
   public void initEditContactById(int id) {
     click(By.cssSelector("a[href = 'edit.php?id=" + id + "'"));
@@ -148,18 +138,13 @@ public class ContactHelper extends BaseHelper {
     contactCache = null;
   }
 
-
   public void openContactDetailsById(int id) {
     wd.findElement(By.cssSelector("a[href = 'view.php?id="+ id +"']")).click();
   }
 
-
   public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
-
-
-  public Contacts contactCache = null;
 
   public Contacts all() {
     if (contactCache != null) {
