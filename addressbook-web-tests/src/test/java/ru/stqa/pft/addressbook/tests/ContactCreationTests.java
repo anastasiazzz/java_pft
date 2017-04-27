@@ -24,7 +24,7 @@ public class ContactCreationTests extends TestBase {
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
     String line = reader.readLine();
     while (line !=null){
-      String[] split = line.split(";");
+      String[] split = line.split(":");
       list.add(new Object[]{new ContactData().withFirstName(split[0]).withLastName(split[1]).withAddress(split[2]).withPhoto(photo).withGroup("test1")});
       line = reader.readLine();
     }
