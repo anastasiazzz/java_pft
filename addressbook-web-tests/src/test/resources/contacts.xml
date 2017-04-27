@@ -9,9 +9,4 @@
     <lastName>surname 1</lastName>
     <address>address 1</address>
   </contact>
-  <contact>
-    <firstName>name 2</firstName>
-    <lastName>surname 2</lastName>
-    <address>address 2</address>
-  </contact>
 </list>
