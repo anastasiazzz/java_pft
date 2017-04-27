@@ -15,7 +15,7 @@ public class ContactUpdationTests extends TestBase{
     app.goTo().homePage();
     if (app.contact().all().size() ==0) {
       app.contact().create(new ContactData().withFirstName("firstName1").withMiddleName("middleName1").withLastName("lastName1").withNickName("NickName1").withCompany("Company1")
-              .withAddress("Address1").withHomePhone("5551").withMobilePhone("4331").withWorkPhone("98761").withEmail2("email1").withGroup("test1"), true);
+              .withAddress("Address1").withHomePhone("5551").withMobilePhone("4331").withWorkPhone("98761").withEmail2("email1"));
     }
   }
   @Test

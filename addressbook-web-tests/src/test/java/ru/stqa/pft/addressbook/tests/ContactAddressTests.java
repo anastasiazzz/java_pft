@@ -19,7 +19,7 @@ public class ContactAddressTests extends TestBase {
     app.goTo().homePage();
     if (app.contact().all().size() ==0) {
       app.contact().create(new ContactData().withFirstName("firstName1").withMiddleName("middleName1").withLastName("lastName1").withNickName("NickName1").withCompany("Company1")
-              .withAddress("Address1").withHomePhone("5551").withMobilePhone("4331").withWorkPhone("+987-22261").withEmail1("email1").withGroup("test1"), true);
+              .withAddress("Address1").withHomePhone("5551").withMobilePhone("4331").withWorkPhone("+987-22261").withEmail1("email1").withGroup("test1"));
     }
   }
 
@@ -29,7 +29,7 @@ public class ContactAddressTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAddress(), equalTo(mergeAddress(contactInfoFromEditForm)));
+    assertThat(contact.getAddress().replaceAll(" ", ""), equalTo(mergeAddress(contactInfoFromEditForm)));
   }
 
   private String mergeAddress(ContactData contact) {

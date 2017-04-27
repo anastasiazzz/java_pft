@@ -27,7 +27,7 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public void fillContactForm(ContactData contactData, boolean creation) {
+  public void fillContactForm(ContactData contactData) {
     fillField(By.name("firstname"), contactData.getFirstName());
     fillField(By.name("middlename"), contactData.getMiddleName());
     fillField(By.name("lastname"), contactData.getLastName());
@@ -43,11 +43,12 @@ public class ContactHelper extends BaseHelper {
     attach(By.name("photo"), contactData.getPhoto());
 
 
-    if (creation) {
+   /* if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+    } */
+
   }
 
   public void initContactCreation() {
@@ -116,9 +117,9 @@ public class ContactHelper extends BaseHelper {
     wd.switchTo().alert().accept();
   }
 
-  public void create(ContactData contactData, boolean creation) {
+  public void create(ContactData contactData) {
     initContactCreation();
-    fillContactForm(contactData, creation);
+    fillContactForm(contactData);
     submitContactCreation();
     contactCache = null;
   }
@@ -126,7 +127,7 @@ public class ContactHelper extends BaseHelper {
   public void modify(ContactData contact) {
     selectContactById(contact.getId());
     initEditContactById(contact.getId());
-    fillContactForm(contact, false);
+    fillContactForm(contact);
     submitUpdateContact();
     contactCache = null;
   }
