@@ -38,9 +38,9 @@ public class ContactHelper extends BaseHelper {
     fillField(By.name("mobile"), contactData.getMobilePhone());
     fillField(By.name("work"), contactData.getWorkPhone());
     fillField(By.name("email"), contactData.getEmail1());
-    fillField(By.name("email"), contactData.getEmail2());
-    fillField(By.name("email"), contactData.getEmail3());
-    attach(By.name("photo"), contactData.getPhoto());
+    fillField(By.name("email2"), contactData.getEmail2());
+    fillField(By.name("email3"), contactData.getEmail3());
+    //attach(By.name("photo"), contactData.getPhoto());
 
 
    /* if (creation) {

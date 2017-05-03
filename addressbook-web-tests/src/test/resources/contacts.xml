@@ -2,11 +2,6 @@
   <contact>
     <firstName>name 0</firstName>
     <lastName>surname 0</lastName>
-    <address>address 0</address>
-  </contact>
-  <contact>
-    <firstName>name 1</firstName>
-    <lastName>surname 1</lastName>
-    <address>address 1</address>
+    <company>company 0</company>
   </contact>
 </list>
