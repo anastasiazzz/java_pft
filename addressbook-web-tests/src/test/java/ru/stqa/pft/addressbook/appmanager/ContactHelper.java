@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +9,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.tests.DbHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,14 +23,10 @@ public class ContactHelper extends BaseHelper {
 
   public Contacts contactCache = null;
 
-  public ContactHelper(WebDriver wd) {
-
-    super(wd);
-  }
+  public ContactHelper(WebDriver wd) { super(wd);  }
 
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
-
   }
 
   public void fillContactForm(ContactData contactData) {
@@ -139,6 +141,13 @@ public class ContactHelper extends BaseHelper {
     contactCache = null;
   }
 
+  public void addToGroup(ContactData contact, int id) {
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(id));
+    wd.findElement(By.cssSelector("input[value='Add to']")).click();
+
+  }
+
   public void openContactDetailsById(int id) {
     wd.findElement(By.cssSelector("a[href = 'view.php?id="+ id +"']")).click();
   }
@@ -165,6 +174,13 @@ public class ContactHelper extends BaseHelper {
     return contactCache;
   }
 
+
+  public boolean isInGroup(ContactData contact, int id) {
+    Groups groups =contact.getGroups();
+    for (GroupData g:groups){
+      if(g.getId()==id) return true;
+    } return false;
+  }
 }
 
 

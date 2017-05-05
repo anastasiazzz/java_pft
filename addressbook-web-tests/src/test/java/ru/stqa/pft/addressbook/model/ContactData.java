@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -14,71 +16,69 @@ import java.io.File;
 public class ContactData {
   @XStreamOmitField
   @Id
-  @Column (name = "id")
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
 
   @Expose
-  @Column (name = "firstname")
+  @Column(name = "firstname")
   private String firstName = "";
 
-  @Column (name = "middlename")
+  @Column(name = "middlename")
   private String middleName = "";
 
   @Expose
-  @Column (name = "lastname")
+  @Column(name = "lastname")
   private String lastName = "";
 
-  @Column (name = "nickname")
+  @Column(name = "nickname")
   private String nickName = "";
 
-
-
   @Expose
-
-  @Column (name = "company")
+  @Column(name = "company")
   private String company = "";
 
-  @Column (name = "address")
-  @Type (type = "text")
+  @Column(name = "address")
+  @Type(type = "text")
   private String address = "";
 
-  @Column (name = "home")
-  @Type (type = "text")
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone = "";
 
-  @Column (name = "mobile")
-  @Type (type = "text")
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilePhone = "";
 
-  @Column (name = "work")
-  @Type (type = "text")
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone = "";
 
   @Transient
   private String allPhones = "";
 
-
-
-  @Column (name = "email")
-  @Type (type = "text")
+  @Column(name = "email")
+  @Type(type = "text")
   private String email1 = "";
 
-  @Column (name = "email2")
-  @Type (type = "text")
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2 = "";
 
-  @Column (name = "email3")
-  @Type (type = "text")
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email3 = "";
 
   @Transient
   private String allEmails;
 
-  @Transient
-  private String group;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
-  @Column (name = "photo")
-  @Type (type = "text")
+
+  @Column(name = "photo")
+  @Type(type = "text")
   private String photo;
 
 
@@ -154,9 +154,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   public ContactData withAllPhones(String allPhones) {
@@ -220,10 +219,6 @@ public class ContactData {
 
   public String getAllEmails() {
     return allEmails;
-  }
-
-  public String getGroup() {
-    return group;
   }
 
   public int getId() {

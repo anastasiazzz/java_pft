@@ -25,7 +25,7 @@ public class ContactUpdationTests extends TestBase{
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withFirstName("firstName3").withMiddleName("middleNameUPDATED").withLastName("lastNameUPDATED").withNickName("NickNameUPDATED")
             .withCompany("CompanyUPDATED").withAddress("AddressUPDATED").withHomePhone("TelephoneUPDATED").withMobilePhone("321").withWorkPhone("4343")
-            .withEmail1("aaaaaa1").withEmail2("aaa2").withEmail3("emailUPDATED").withGroup( "test1");
+            .withEmail1("aaaaaa1").withEmail2("aaa2").withEmail3("emailUPDATED");
     app.contact().modify(contact);
     app.returnToHomePage();
     assertThat(app.contact().count(), equalTo(before.size()));
