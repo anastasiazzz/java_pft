@@ -1,8 +1,7 @@
-package ru.stqa.pft.addressbook.appmanager;
+package ru.stqa.pft.mantis.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by anastasia.papko on 22.03.2017.

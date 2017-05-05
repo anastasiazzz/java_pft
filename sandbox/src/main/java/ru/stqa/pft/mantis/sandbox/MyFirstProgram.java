@@ -1,4 +1,4 @@
-package ru.stqa.pft.sandbox;
+package ru.stqa.pft.mantis.sandbox;
 
 public class MyFirstProgram {
 

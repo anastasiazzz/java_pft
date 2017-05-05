@@ -1,13 +1,11 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.mantis.addressbook.tests;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.mantis.addressbook.model.GroupData;
+import ru.stqa.pft.mantis.addressbook.model.Groups;
 
 import java.io.*;
 import java.util.ArrayList;

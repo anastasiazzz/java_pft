@@ -3,9 +3,9 @@
 <suite name="Suite1" verbose="1" >
     <test name="Contacts" >
         <classes>
-            <class name="ru.stqa.pft.addressbook.tests.ContactCreationTests" />
-            <class name="ru.stqa.pft.addressbook.tests.ContactUpdationTests" />
-            <class name="ru.stqa.pft.addressbook.tests.ContactDeletionTests" />
+            <class name="ru.stqa.pft.mantis.addressbook.tests.ContactCreationTests" />
+            <class name="ru.stqa.pft.mantis.addressbook.tests.ContactUpdationTests" />
+            <class name="ru.stqa.pft.mantis.addressbook.tests.ContactDeletionTests" />
         </classes>
     </test>
 </suite>

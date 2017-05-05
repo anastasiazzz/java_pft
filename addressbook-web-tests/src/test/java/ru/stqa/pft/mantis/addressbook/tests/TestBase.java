@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.mantis.addressbook.tests;
 
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
@@ -7,9 +7,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
-import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.mantis.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.mantis.addressbook.model.GroupData;
+import ru.stqa.pft.mantis.addressbook.model.Groups;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
