@@ -139,7 +139,7 @@ public class ContactHelper extends BaseHelper {
   public void addToGroup(ContactData contact, int id) {
     selectContactById(contact.getId());
     new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(id));
-    wd.findElement(By.cssSelector("input[value='Add to']")).click();
+    wd.findElement(By.name("add")).click();
 
   }
 
@@ -172,9 +172,16 @@ public class ContactHelper extends BaseHelper {
 
   public boolean isInGroup(ContactData contact, int id) {
     Groups groups =contact.getGroups();
+    System.out.println(groups.size());
     for (GroupData g:groups){
       if(g.getId()==id) return true;
     } return false;
+  }
+
+  public void removeFromGroup(ContactData contact, int id) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(id));
+    selectContactById(contact.getId());
+    wd.findElement(By.name("remove")).click();
   }
 }
 

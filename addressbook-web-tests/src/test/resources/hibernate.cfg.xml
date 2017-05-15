@@ -15,12 +15,12 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/addressbook</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/addressbook?zeroDateTimeBehavior=convertToNull</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
 
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+        <!--property name="connection.pool_size">1</property-->
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>

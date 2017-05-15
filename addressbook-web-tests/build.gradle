@@ -14,6 +14,7 @@ dependencies {
     compile 'ch.qos.logback:logback-classic:1.2.2'
     compile 'mysql:mysql-connector-java:6.0.6'
     compile 'org.hibernate:hibernate-core:5.2.10.Final'
+    compile 'org.jadira.usertype:usertype.core:6.0.1.GA'
 }
 
 task testGroups(type: Test){

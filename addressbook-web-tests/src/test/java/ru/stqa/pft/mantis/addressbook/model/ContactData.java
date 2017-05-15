@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -80,6 +81,10 @@ public class ContactData {
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @Column(name="deprecated")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date deprecated;
 
 
   public ContactData withId(int id) {
@@ -168,6 +173,10 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withDeprecated(Date deprecated) {
+    this.deprecated = deprecated;
+    return this;
+  }
 
   public String getFirstName() {
     return firstName;

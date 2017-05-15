@@ -10,9 +10,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Created by anastasia.papko on 04.05.2017.
+ * Created by anastasia.papko on 15.05.2017.
  */
-public class AddContactToGroupTests extends TestBase{
+public class RemoveContactFromGroupTests extends TestBase{
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().groupPage();
@@ -20,25 +20,24 @@ public class AddContactToGroupTests extends TestBase{
       app.group().create(new GroupData().withName("test").withHeader("Header").withFooter("Footer"));
     }
     app.goTo().homePage();
-    if (app.db().contacts().size() ==0 || app.db().contactsWithoutGroups().size() ==0) {
+    if (app.db().contacts().size() ==0) {
       app.contact().create(new ContactData().withFirstName("firstName1").withMiddleName("middleName1").withLastName("lastName1").withNickName("NickName1").withCompany("Company1").withAddress("Address1").withHomePhone("Telephone1").withEmail2("email1"));
+    }
+    if (app.db().contactsFromGroup().size() ==0){
+      int id  = app.db().groups().iterator().next().getId();
+      ContactData contact = app.db().contactsWithoutGroups().iterator().next();
+      app.contact().addToGroup(contact, id);
     }
   }
 
   @Test
-  public void testAddContactToGroup() throws InterruptedException {
+  public void testRemoveContactFromGroup() throws InterruptedException {
     app.goTo().homePage();
-    int id  = app.db().groups().iterator().next().getId();
-    ContactData contact = app.db().contactsWithoutGroups().iterator().next();
-    app.contact().addToGroup(contact, id);
+    ContactData contact = app.db().contactsFromGroup().iterator().next();
+    int id  = contact.getGroups().iterator().next().getId();
+    app.contact().removeFromGroup(contact, id);
     Thread.sleep(1000);
     contact  = app.db().contactById(contact.getId()).iterator().next();
-    assertThat(app.contact().isInGroup(contact, id),equalTo(true));
-
-
-
+    assertThat(app.contact().isInGroup(contact, id),equalTo(false));
   }
-
 }
-
-
