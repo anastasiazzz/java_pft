@@ -27,6 +27,7 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private String browser;
   private DbHelper dbHelper;
+  private MailHelper mailHelper;
 
   public ApplicationManager(String browser)  {
     this.browser = browser;
@@ -57,7 +58,6 @@ public class ApplicationManager {
   }
 
 
-
   public void stop() {
     contactHelper.wd.quit();
   }
@@ -80,6 +80,13 @@ public class ApplicationManager {
 
   public DbHelper db(){
     return dbHelper;
+  }
+  
+  public MailHelper mail(){
+    if (mailHelper == null){
+      mailHelper = new MailHelper(this);
+    }
+  return mailHelper;
   }
 }
 
